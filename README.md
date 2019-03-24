@@ -8,10 +8,10 @@ Of course, you are free to start this project from scratch if you wish! Just be 
 
 To get started:
 
-* get a copy of the project by downloading or git clone https://github.com/virmon/reactnd-myreads.git
+* get a copy of the project by downloading or `git clone https://github.com/virmon/reactnd-myreads.git`
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
-* the server will start running and will open the browser directly you to http://localhost:3000/
+* the server will start running and will open the browser directly you to `http://localhost:3000/`
 
 ## What You're Getting
 ```bash
