@@ -21,7 +21,7 @@ class BooksApp extends React.Component {
       .then((books) => {
         this.setState({ 
           books
-        })
+        });
       })
   }
   /** 
@@ -30,7 +30,7 @@ class BooksApp extends React.Component {
    * returns {Object} Filtered Objects equal to passed parameter shelf
    */
   getBooksByShelf = (shelf) => {
-    return this.state.books.filter(r => r.shelf === shelf)
+    return this.state.books.filter(r => r.shelf === shelf);
   }
   /** 
    * @description Calls update API 
