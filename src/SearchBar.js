@@ -10,7 +10,10 @@ class SearchBar extends Component {
       searchResult: []
     }
 
-    /** Calls the search API */
+    /** 
+     * @description Calls the search API 
+     * @param {string} query - Value from search box 
+     */
     search = (query) => {
       BooksAPI
         .search(query, 20)
@@ -22,12 +25,14 @@ class SearchBar extends Component {
       });
     }
 
-    /** Compares the result from search API and props books 
-     *  Array results and books are mapped into strings
-     *  then filters result array with shelf property and the other with non-shelf property
-     *  then get indeces of each Object in the array
-     *  Indeces are mapped to return the Object 
-     *  then change the state of searchResult to the combined arrays
+    /** 
+     *  @description Compares the result from search API and props books. 
+     *  Array results and books are mapped into strings then filters result.
+     *  Array with shelf property and the other with non-shelf property
+     *  then get indeces of each Object in the array. Indeces are mapped
+     *  to return the Object then change the state of searchResult to the concatenated arrays
+     * @params {array} results - Books returned from search API
+     * @params {array} books - Books existing in shelf
     */
     findBooksWithShelf = (results, books) => {
       // Make each Object to string then declare to a variable
@@ -43,14 +48,17 @@ class SearchBar extends Component {
       var index2 = noShelf.map(item => result.indexOf(item));
       
       // Map each index with its corresponding Object
-      var arr5 = index.map(item => books[item]);
-      var arr6 = index2.map(item => results[item]);
+      var arrBooks = index.map(item => books[item]);
+      var arrResults = index2.map(item => results[item]);
       
       // Concatenate both arrays then set the state
-      this.setState({ searchResult: arr5.concat(arr6) });
+      this.setState({ searchResult: arrBooks.concat(arrResults) });
     }
 
-    /** Handles input field when something has changed */
+    /** 
+     * @description Handles input field when something has changed 
+     * @param {string} query - Change state on every update on seach box
+     */
     handleChange = (query) => {
       this.setState({ 
         query

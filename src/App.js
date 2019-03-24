@@ -24,23 +24,36 @@ class BooksApp extends React.Component {
         })
       })
   }
-  /** Returns books with shelf property equal to the passed argument */
+  /** 
+   * @description Returns books with shelf property equal to the passed argument 
+   * @param {string} shelf - The category of the shelf ('currentlyReading', 'wantsToRead', 'read')
+   * returns {Object} Filtered Objects equal to passed parameter shelf
+   */
   getBooksByShelf = (shelf) => {
     return this.state.books.filter(r => r.shelf === shelf)
   }
-  /** Calls update API */
+  /** 
+   * @description Calls update API 
+   * @param {Object} book - An Object containing id, title, author, imageLinks, and shelf
+   * @param {shelf} shelf - The category of the shelf ('currentlyReading', 'wantsToRead', 'read')
+   */
   updateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf)
     .then(() => {
       this.checkExisting(book, this.state.books);
     });
   }
+  /**
+   * @description Set state of books to updated list
+   * @param {array} book - An Object containing id, title, author, imageLinks, and shelf
+   * @param {array} bookshelf - The current state of books in shelf
+   */
   checkExisting = (book, bookshelf) => {
     var booksById = bookshelf.map(item => item.id);
-    var b = booksById.filter(item => !book.id.includes(item));
-    var c = b.map(item => booksById.indexOf(item));
-    var d = c.map(item => bookshelf[item]);
-    this.setState(() => ({ books: d }));
+    var filteredBooks = booksById.filter(item => !book.id.includes(item));
+    var arrIndex = filteredBooks.map(item => booksById.indexOf(item));
+    var currentBooks = arrIndex.map(item => bookshelf[item]);
+    this.setState(() => ({ books: currentBooks }));
     this.setState(prevState => ({ books: [...prevState.books, book] }));
   }
   render() {

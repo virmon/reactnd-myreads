@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const BookItem = (props) => {
-  /** Creates a book Object that contains id and shelf 
-   *  that is passed as a parameter in onUpdateShelf 
+  /** 
+   *  @description Instantiate a book Object that contains id, title, authors, imageLinks and shelf 
+   *  @param {string} value - Value from the select tag options
    */
   function handleChange(value) {
     let book = {

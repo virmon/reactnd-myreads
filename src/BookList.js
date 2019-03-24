@@ -3,7 +3,10 @@ import BookItem from './BookItem';
 import PropTypes from 'prop-types';
 
 class BookList extends Component {
-  /** Calls updateShelf from App Component */
+  /** 
+   * @description Calls updateShelf from App Component
+   * @param {Object} book - An Object with properties id, title, author, imageLinks and shelf
+  */
   onUpdateShelf = (book) => {
     this.props.updateShelf(book, book.shelf);
   }
