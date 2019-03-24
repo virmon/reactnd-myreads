@@ -3,7 +3,7 @@ import * as BooksAPI from './BooksAPI';
 import SearchBar from './SearchBar';
 import BookList from './BookList';
 import { Route, Link } from 'react-router-dom';
-import './App.css'
+import './App.css';
 
 class BooksApp extends React.Component {
   state = {
@@ -20,15 +20,28 @@ class BooksApp extends React.Component {
     BooksAPI.getAll()
       .then((books) => {
         this.setState({ 
-          books 
+          books
         })
       })
   }
+  /** Returns books with shelf property equal to the passed argument */
   getBooksByShelf = (shelf) => {
     return this.state.books.filter(r => r.shelf === shelf)
   }
+  /** Calls update API */
   updateShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf);
+    BooksAPI.update(book, shelf)
+    .then(() => {
+      this.checkExisting(book, this.state.books);
+    });
+  }
+  checkExisting = (book, bookshelf) => {
+    var booksById = bookshelf.map(item => item.id);
+    var b = booksById.filter(item => !book.id.includes(item));
+    var c = b.map(item => booksById.indexOf(item));
+    var d = c.map(item => bookshelf[item]);
+    this.setState(() => ({ books: d }));
+    this.setState(prevState => ({ books: [...prevState.books, book] }));
   }
   render() {
     return (
@@ -42,7 +55,7 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <BookList name={'Currently Reading'} books={this.getBooksByShelf('currentlyReading')} updateShelf={this.updateShelf} />
-            <BookList name={'Wants to Read'} books={this.getBooksByShelf('wantToRead')} updateShelf={this.updateShelf} />
+            <BookList name={'Want to Read'} books={this.getBooksByShelf('wantToRead')} updateShelf={this.updateShelf} />
             <BookList name={'Read'} books={this.getBooksByShelf('read')} updateShelf={this.updateShelf} />
             <div className="open-search">
               <Link to='/search' onClick={() => this.setState({ showSearchPage: true })}>Add a book</Link>
