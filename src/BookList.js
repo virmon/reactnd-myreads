@@ -3,9 +3,9 @@ import BookItem from './BookItem';
 import PropTypes from 'prop-types';
 
 class BookList extends Component {
+  /** Calls updateShelf from App Component */
   onUpdateShelf = (book) => {
     this.props.updateShelf(book, book.shelf);
-    //console.log(book.id + ' ' + book.shelf);
   }
   render() {
     const { books, name } = this.props;
@@ -16,9 +16,8 @@ class BookList extends Component {
           <div className="bookshelf-books">
             <ol className="books-grid">
               {
-                //console.log(books)
                 books.length === 0
-                ? <div>No results found</div>
+                ? <div>{books.length} results found</div>
                 : books.map((book) => {
                     return(
                       <BookItem 
@@ -41,7 +40,9 @@ class BookList extends Component {
 }
 
 BookList.propTypes = {
-  books: PropTypes.array.isRequired
+  name: PropTypes.string,
+  books: PropTypes.array.isRequired,
+  updateShelf: PropTypes.func.isRequired
 }
 
 export default BookList;
