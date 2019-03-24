@@ -11,7 +11,7 @@ To get started:
 * get a copy of the project by downloading or `git clone https://github.com/virmon/reactnd-myreads.git`
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
-* the server will start running and will open the browser directly you to `http://localhost:3000/`
+* the server will start running and will open a browser to `http://localhost:3000/`
 
 ## What You're Getting
 ```bash
