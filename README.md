@@ -1,6 +1,6 @@
 # MyReads Project
 
-MyReads Project is a **book tracking app** that lets users categorize their own bookshelf. Users may categorize the books to _currently reading_, _want to read_, and _read_. This project is one of the requirements in React Nanodegree Program.
+MyReads Project is a **book tracking app** that lets users categorize their own bookshelf. Users may search on books and categorize them by _currently reading_, _want to read_, and _read_. This project is one of the requirements in React Nanodegree Program.
 
 ## Getting Started
 * Download or `git clone https://github.com/virmon/reactnd-myreads.git`
