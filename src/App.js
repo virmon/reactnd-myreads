@@ -2,7 +2,7 @@ import React from 'react';
 import * as BooksAPI from './BooksAPI';
 import SearchBar from './SearchBar';
 import BookList from './BookList';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import './App.css';
 
 class BooksApp extends React.Component {
@@ -59,22 +59,24 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Route path='/search' render={() => (
-          <SearchBar books={this.state.books} updateShelf={this.updateShelf} />
-        )} />
-        <Route exact path='/' render={() => (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
+        <Switch>
+          <Route path='/search' render={() => (
+            <SearchBar books={this.state.books} updateShelf={this.updateShelf} />
+          )} />
+          <Route exact path='/' render={() => (
+            <div className="list-books">
+              <div className="list-books-title">
+                <h1>MyReads</h1>
+              </div>
+              <BookList name={'Currently Reading'} books={this.getBooksByShelf('currentlyReading')} updateShelf={this.updateShelf} />
+              <BookList name={'Want to Read'} books={this.getBooksByShelf('wantToRead')} updateShelf={this.updateShelf} />
+              <BookList name={'Read'} books={this.getBooksByShelf('read')} updateShelf={this.updateShelf} />
+              <div className="open-search">
+                <Link to='/search' onClick={() => this.setState({ showSearchPage: true })}>Add a book</Link>
+              </div>
             </div>
-            <BookList name={'Currently Reading'} books={this.getBooksByShelf('currentlyReading')} updateShelf={this.updateShelf} />
-            <BookList name={'Want to Read'} books={this.getBooksByShelf('wantToRead')} updateShelf={this.updateShelf} />
-            <BookList name={'Read'} books={this.getBooksByShelf('read')} updateShelf={this.updateShelf} />
-            <div className="open-search">
-              <Link to='/search' onClick={() => this.setState({ showSearchPage: true })}>Add a book</Link>
-            </div>
-          </div>
-        )} />
+          )} />
+        </Switch>
       </div>
     )
   }
