@@ -15,8 +15,9 @@ class SearchBar extends Component {
      * @param {string} query - Value from search box 
      */
     search = (query) => {
-      if(query !== '' ) {
+      if(query === '' ) {
         this.setState({ searchResult: [] }) ;
+      } else {
         BooksAPI
           .search(query, 20)
           .then((result) => {
