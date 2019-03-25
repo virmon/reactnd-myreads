@@ -32,6 +32,15 @@ MyReads Project is a **book tracking app** that lets users categorize their own 
     └── index.js # Used for DOM rendering.
 ```
 
+## Screenshots
+
+**Home Screen**
+![home screen](/screenshots/home.png "Home Screen")
+**Search Screen**
+![search screen](/screenshots/seach.png "Search Screen")
+**With search results**
+![search results](/screenshots/search_result.png "Search Screen with results")
+
 ## Backend Server
 
 [`BooksAPI.js`](src/BooksAPI.js), the backend server used in MyReads Project. This API was provided by Udacity in order to perform necessary operations on the backend.
