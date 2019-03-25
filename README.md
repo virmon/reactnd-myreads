@@ -37,7 +37,7 @@ MyReads Project is a **book tracking app** that lets users categorize their own 
 **Home Screen**
 ![home screen](/screenshots/home.png "Home Screen")
 **Search Screen**
-![search screen](/screenshots/seach.png "Search Screen")
+![search screen](/screenshots/search.png "Search Screen")
 **With search results**
 ![search results](/screenshots/search_result.png "Search Screen with results")
 
