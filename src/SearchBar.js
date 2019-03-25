@@ -15,14 +15,19 @@ class SearchBar extends Component {
      * @param {string} query - Value from search box 
      */
     search = (query) => {
-      BooksAPI
-        .search(query, 20)
-        .then((result) => {
+      if(query !== '' ) {
+        this.setState({ searchResult: [] }) ;
+        BooksAPI
+          .search(query, 20)
+          .then((result) => {
+            if(query === this.state.query) {
               this.findBooksWithShelf(result, this.props.books);
-      })
-      .catch((error) => {
-        this.setState({ searchResult: [] }) 
-      });
+            }
+        })
+        .catch((error) => {
+          this.setState({ searchResult: [] }) 
+        });
+      }
     }
 
     /** 
